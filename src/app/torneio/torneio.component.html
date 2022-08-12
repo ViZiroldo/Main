@@ -1,0 +1,104 @@
+<div class="container">
+<span><h1>Dados do torneio</h1></span>
+  <mat-card *ngIf="idTorneio === true">
+    <form  (ngSubmit)="salvar()">
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label for="nome">Nome</mat-label>
+            <input matInput
+                name="nome"
+                id="nome"
+                class="form-control"
+                [(ngModel)]="newTorneio.nomeTorneio"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label for="premio">Premiação </mat-label>
+            <input matInput
+                currencyMask
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                name="premio"
+                id="premio"
+                class="form-control"
+                [(ngModel)]="newTorneio.premiacao"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label for="grupos">Quantide maxima de grupos</mat-label>
+            <input matInput
+                nome="grupos"
+                id="grupos"
+                [(ngModel)]="newTorneio.totalGrupo"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label for="participantes">Quantide maxima de times</mat-label>
+            <input matInput
+                nome="participantes"
+                id="participantes"
+                [(ngModel)]="newTorneio.totalParticipantes"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field appearance="outline">
+              <mat-label for="inicio">Data de inicio do torneio</mat-label>
+              <input matInput
+                [matDatepicker]="picker"
+                nome="inicio"
+                id="inicio"
+                [(ngModel)]="newTorneio.dataInicio"
+                [ngModelOptions]="{standalone: true}">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field appearance="outline">
+              <mat-label for="fim">Data de encerramento do torneio</mat-label>
+              <input matInput
+                [matDatepicker]="picker1"
+                nome="fim"
+                id="fim"
+                [(ngModel)]="newTorneio.dataFim"
+                [ngModelOptions]="{standalone: true}">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <div mat-dialog-actions>
+        <button mat-button type="submit" cdkFocusInitial>Salvar</button>
+      </div>
+  </form>
+  </mat-card>
+
+  <div *ngIf="idTorneio  === false">
+    <button mat-icon-button (click)="openDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <span>Adicionar torneio</span>
+  </div>
+
+</div>
+

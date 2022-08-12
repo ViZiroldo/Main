@@ -1,0 +1,13 @@
+.container {
+  width: auto;
+  height: 813px;
+  margin: auto;
+}
+.sidebar {
+  background-color: #e6e8ee;
+  width: 200px;
+}
+.title{
+  position: relative;
+  top: 5px;
+}

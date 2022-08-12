@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.container{
+  padding: 80px ;
+  border-radius: 5px;
+}
+.example-form {
+  width: 400px;
+}
+.example-full-width {
+  width: 100%;
+}

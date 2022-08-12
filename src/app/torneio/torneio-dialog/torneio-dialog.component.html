@@ -1,0 +1,71 @@
+<h1  mat-dialog-title>Novo torneio</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="add()">
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label for="nomeTorneio">Nome</mat-label>
+        <input type="text" name="nomeTorneio" id="nomeTorneio" formControlName="nomeTorneio" class="form-control" matInput>
+      </mat-form-field>
+      <div *ngIf="f['nomeTorneio'].touched && f['nomeTorneio'].invalid" class="alert alert-danger">
+        <div *ngIf="f['nomeTorneio'].errors && f['nomeTorneio'].errors['required']">Title is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label for="premiacao">Premiação</mat-label>
+        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text" name="premiacao" id="premiacao" formControlName="premiacao" class="form-control" matInput>
+      </mat-form-field>
+      <div *ngIf="f['premiacao'].touched && f['premiacao'].invalid" class="alert alert-danger">
+        <div *ngIf="f['premiacao'].errors && f['premiacao'].errors['required']">Title is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label for="totalGrupo">Quantide maxima de grupos</mat-label>
+        <input type="number" name="totalGrupo" id="totalGrupo" formControlName="totalGrupo" class="form-control" matInput>
+      </mat-form-field>
+      <div *ngIf="f['totalGrupo'].touched && f['totalGrupo'].invalid" class="alert alert-danger">
+        <div *ngIf="f['totalGrupo'].errors && f['totalGrupo'].errors['required']">Title is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label for="totalParticipantes">Quantide maxima de times</mat-label>
+        <input type="number" name="totalParticipantes" id="totalParticipantes" formControlName="totalParticipantes" class="form-control" matInput>
+      </mat-form-field>
+      <div *ngIf="f['totalParticipantes'].touched && f['totalParticipantes'].invalid" class="alert alert-danger">
+        <div *ngIf="f['totalParticipantes'].errors && f['totalParticipantes'].errors['required']">Title is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label for="dataInicio">Data de inicio do torneio</mat-label>
+        <input type="date" name="dataInicio" id="dataInicio" formControlName="dataInicio" class="form-control" matInput>
+      </mat-form-field>
+      <div *ngIf="f['dataInicio'].touched && f['dataInicio'].invalid" class="alert alert-danger">
+        <div *ngIf="f['dataInicio'].errors && f['dataInicio'].errors['required']">Title is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label for="dataFim">Data de encerramento do torneio</mat-label>
+        <input type="date" name="dataFim" id="dataFim" formControlName="dataFim" class="form-control" matInput>
+      </mat-form-field>
+      <div *ngIf="f['dataFim'].touched && f['dataFim'].invalid" class="alert alert-danger">
+        <div *ngIf="f['dataFim'].errors && f['dataFim'].errors['required']">Title is required.</div>
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancelar</button>
+      <button mat-button type="submit" [disabled]="!form.valid" cdkFocusInitial>Criar</button>
+    </div>
+</form>
+</div>
+

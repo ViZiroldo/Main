@@ -1,0 +1,87 @@
+<!-- CRIAR -->
+<div *ngIf="isCriar === true">
+  <h1 mat-dialog-title>Novo Time</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="add()">
+      <div class="form-group">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label for="nome">Nome</mat-label>
+          <input type="text" name="nome" id="nome" formControlName="nome" class="form-control" matInput>
+        </mat-form-field>
+        <div *ngIf="f['nome'].touched && f['nome'].invalid" class="alert alert-danger">
+          <div *ngIf="f['nome'].errors && f['nome'].errors['required']">Title is required.</div>
+        </div>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Cancelar</button>
+        <button mat-button type="submit" [disabled]="!form.valid" cdkFocusInitial>Criar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- EDITAR -->
+<div *ngIf="data.isCriar === false">
+  <h1 mat-dialog-title>Editar Time</h1>
+  <form  (ngSubmit)="salvar()">
+
+    <!-- INFO TIME -->
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label for="nome">Nome</mat-label>
+            <input matInput
+                name="nome"
+                id="nome"
+                class="form-control"
+                [(ngModel)]="time.nomeTime"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <!-- INFO PLAYERS -->
+    <button mat-icon-button >
+      <mat-icon>person_add</mat-icon>
+    </button>
+    <span>Novo Player</span>
+    <table #table mat-table class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let item">  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let item">  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="funcao">
+        <th mat-header-cell *matHeaderCellDef> Função </th>
+        <td mat-cell *matCellDef="let item"> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="idade">
+        <th mat-header-cell *matHeaderCellDef> Idade </th>
+        <td mat-cell *matCellDef="let item"> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let item">
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div mat-dialog-actions>
+      <button mat-button type="submit" style="font-size:medium;" cdkFocusInitial>Salvar</button>
+    </div>
+  </form>
+</div>
+
+

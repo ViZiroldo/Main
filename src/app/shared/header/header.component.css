@@ -1,0 +1,17 @@
+.header{
+  background-color: rgba(14, 13, 13, 0.904);
+}
+.title{
+  color: white;
+}
+.logout{
+  display:flex;
+  color: white;
+}
+.container{
+  margin: 0;
+  position: absolute;
+  top: 2%;
+  left: 97%;
+  vertical-align: middle;
+}
